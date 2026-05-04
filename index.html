@@ -4,9 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit Converter | Dilsan Basnet | Macondo Project</title>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
+
+    <nav>
+        <div class="logo"> ⚙️ UnitConverter</div>
+        <div class="name">Dilsan Basnet</div>
+    </nav>
+    <div class="main-container">
+        <div class="converter-card">
+            <label>Unit Name</label>
+            <select id="type">
+                <option value="length">Length</option>
+                <option value="weight">Weight</option>
+                <option value="temp">Temperature</option>
+            </select>
+
+<div class="grid">
+    <div>
+        <label >From</label>
+        <select id="fromUnit"></select>
+        <input type="number" id="inputNum" value="1">
+    </div>
+    <div>
+        <label>To</label>
+        <select id="toUnit"></select>
+        <input type="text" id="outputNum" readonly>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <footer class="sub-footer">
+        <p>You Can units with the help of UnitConverter 🙏 </p>
+    </footer>
+
+    <footer>
+        <p>Created By <strong>Dilsan Basnet</strong></p>
+        <a href="https://github.com/DilsanBasnet" target="_blank"><i style="font-size: 30px; 
+        color: black;" class="fa">&#xf09b;</i></a>
+        <p><a href="https://macondo.hackclub.com/dashboard?from=fade">🦋 Macondo Project</p>
+    </footer>
     
 </body>
 </html>

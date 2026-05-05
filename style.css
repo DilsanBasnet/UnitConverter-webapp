@@ -1,5 +1,133 @@
 
 :root {
-    
+    --primary: rgb(38, 98, 226);
+    --bg: rgb(187, 192, 197);
+    --text: #1f2a3d;
 
 }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);;
+    color: var(--text);
+    margin: 0px;
+    display: flex;;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+nav {
+    background: white;
+    padding: 16px 24px;
+    border-bottom: 3px solid var(--primary)
+    ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.name .profile{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+}
+
+.logo {
+    font-weight: bolder;
+    font-size: 18px;
+    color: var(--primary);
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 22px;
+}
+
+.converter-card {
+    background: rgba(248, 246, 246, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 460px;
+    transition: transform 0.3s ease, 
+    box-shadow 0.3s;;
+    backdrop-filter: blur(6px);
+    
+}
+
+.converter-card:hover {
+    transform: translateY(-6px);;
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+
+label{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(89, 103, 122);;
+}
+
+select {
+    width: 100%;
+    ;
+    padding: 13px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(202, 212, 223);
+    border-radius: 8px;
+    font-size: 16px;
+    ;
+    box-sizing: border-box;
+}
+
+input {
+    width: 100%;;
+    padding: 12px;
+    border: 1px solid rgb(184, 173, 173);
+    margin-bottom: 19px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input, select {
+    appearance: none;
+   background-color: rgb(229, 229, 241); 
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 7px;
+}
+
+footer {
+    text-align: center;;
+    padding: 19px;
+    font-size: 15px;
+    background: rgb(247, 244, 244);
+    border-top: 1px solid #d9e3f0;
+
+}
+
+footer a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+

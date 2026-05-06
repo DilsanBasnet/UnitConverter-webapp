@@ -1,7 +1,9 @@
 const units = {
     length: { Meters: 1, Kilometers: 1000, Feet: 0.3048, Miles: 1609.34, Inches: 0.0254},
     weight: {Kilograms: 1, Grams: 0.001, Pounds: 0.4535, Ounces: 0.0283},
+    area: {"Sq Meters": '1', "Sq Kilometers": 1000000, "Sq Feet": 0.0929, "Acres": 4046.86},
     temp: {Celsius: 'c', Fahrenheit: 'f', Kelvin: 'k' }
+    
 };
 
 const typeEl = document.getElementById('type');;
@@ -9,6 +11,8 @@ const fromEl = document.getElementById('fromUnit');
 const toEl = document.getElementById('toUnit');
 const inputEl = document.getElementById('inputNum');
 const outputEl = document.getElementById('outputNum');
+
+const historyList = documentElementById('historyList');
 
 function updateOptions() {
     const category = typeEl.value;
@@ -22,6 +26,21 @@ if(options.length > 1) toEl.selectedIndex = 1;
 convert();
 }
 
+function addToHistory(val, from, res, to) {
+    if(!val || val == 0) return;
+    const li = document.createElement('div');
+    li.className = 'history-item';
+    li.innerHTML = `<span>${val} ${from}</span>
+    <span> -> </span> <strong>${res} ${to}</strong></span>`;
+
+    if(historyList.querySelector('.empty-msg'))historyList.innerHTML='';
+
+    historyList.prepend(li);
+
+    if(historyList.children.length > 4) {
+        historyList.removeChild(historyList.lastChild);
+    }
+
 function convert() {
     const cat = typeEl.value;
     const val = parseFloat(inputEl.value);
@@ -32,34 +51,80 @@ function convert() {
     }
     if( cat === 'temp') {
         let c;
-        const from = fromEl.value;
-        const to = toEl.value;
 
-        if(from === 'Celsius') c = val;
-        else if(from === 'Fahrenheit') c = (val - 32) * 5/9;
+        if(fromEl.value === 'Celsius') c = val;
+        else if(fromEl.value === 'Fahrenheit') c = (val - 32) * 5/9;
         else c = val - 273.15;
 
-
-    let res;
-    if(to === 'Celsius') res = c;
-    else if(to === 'Fahrenheit' ) res = (c * 9/5) + 32;
+    if(toEl.value === 'Celsius') res = c;
+    else if(toEl.value === 'Fahrenheit' ) res = (c * 9/5) + 32;
     else res = c + 273.15;
-
-    outputEl.value = Number(res.toFixed(4));
+res = Number(res.toFixed(4));
 } 
 else {
-    const fromFactor = units[cat][fromEl.value];
-    const toFactor = units[cat][toEl.value];
-    const result = val*(fromFactor / toFactor);
-
-    outputEl.value = result % 1 === 0 ? result: Number(result.toFixed(5));
+    res = val * (units[cat] [fromEl.value] / units[cat] [toEl.value]);
+    res = res % 1 === 0 ? res : Number(res.toFixed(5));
 
 }
+
+outputEl.value = res;
 }
+
+let logTimer;
+input
+
+
+}
+
+copyBtn.addEventListener('click', () => {
+    const text = document.getElementById('outputNum').value;
+
+    if(text) {
+        navigator.clipboard.writeText(text);
+        copyBtn.innerText = '✔️'
+        setTimeout(() => copyBtn.innerText = '📑', 1500);
+    }
+});
 typeEl.addEventListener('change', updateOptions);
 [fromEl, toEl, inputEl].forEach(el => {
     el.addEventListener('input', convert);
 });
 
+clearBtn.addEventListener('click', () => {
+    historyList.innerHTML = `<li class="empty-msg'> No recent Actvity</li>`;
+});
+
+let historyTimer;
+function convert() {
+    const cat = typeEl.value;
+    const val = parseFloat(inputEl.value);
+
+if(isNaN(val)) {outputEl.value= ""; return;}
+}
+
+let res;
+if(cat === 'temp') {
+    let c;
+    if(fromEl.value === 'Celsius') c = val;
+    
+    else if (fromEl.value === 'Fahrenheit') c = (val - 32) * 5/9;
+    else c = val - 273.15;
+
+    if(toEl.value === 'Celsius') res = c;
+    else if (toEl.value === 'Fahrenheit') res = (c * 9/5) + 32;
+    else res = val + 273.15;
+    res = Number(res.toFixed(4)); }
+    else {
+        res = val * (units[cat][fromEl.value] / units [cat][toEl.value]);
+        res = res % 1 === 0 ? res : Number(res.toFixed(5));
+    }
+
+    outputEl.value = res;
+
+    clearTimeout(historyTimer);
+    historyTimer = setTimeout(() => {
+        if (val) addToHistory(val, fromEl.value, res, toEl.value);
+    }, 1000);
+   
 updateOptions();
 

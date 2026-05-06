@@ -6,6 +6,12 @@
 
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg);;
@@ -37,9 +43,10 @@ nav {
 
 .name .profile{
 
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    
     
 }
 
@@ -56,14 +63,6 @@ nav {
     color: var(--primary);
 }
 
-.main-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 22px;
-}
-
 .converter-card {
     background: rgba(248, 246, 246, 0.9);
     padding: 2rem;
@@ -71,19 +70,31 @@ nav {
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 460px;
-    transition: transform 0.3s ease, 
-    box-shadow 0.3s;;
+    transition: transform 0.3s ease
+    box-shadows 0.3s;
     backdrop-filter: blur(6px);
 
     margin: auto;
     margin-top: 100px;
     
 }
-
 .converter-card:hover {
     transform: translateY(-6px);;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
 }
+h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+
+}
+.form-group {
+    margin-bottom: 20px;
+}
+
 
 .grid {
 display: grid;

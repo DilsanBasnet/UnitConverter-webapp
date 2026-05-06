@@ -1,0 +1,16 @@
+@media(max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+
+
+    }
+    nav {
+        padding: 15px;
+        gap: 11px;
+    }
+    .converter-card {
+        padding: 19px;
+        margin: 11px;
+
+    }
+}

@@ -10,10 +10,19 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg);;
     color: var(--text);
-    margin: 0px;
+    margin: 0;
     display: flex;;
     flex-direction: column;
-    min-height: 100vh
+    min-height: 100vh;
+    
+}
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ;
+    padding: 20px;
 }
 
 nav {
@@ -24,8 +33,6 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
 }
 
 .name .profile{
@@ -60,12 +67,22 @@ nav {
     transition: transform 0.3s ease, 
     box-shadow 0.3s;;
     backdrop-filter: blur(6px);
+
+    margin: auto;
+    margin-top: 100px;
     
 }
 
 .converter-card:hover {
     transform: translateY(-6px);;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+.grid {
+display: grid;
+grid-template-columns: 1fr 1fr;;
+gap: 20px;
+align-items: start ;
 }
 
 
@@ -118,16 +135,35 @@ input, select {
 
 footer {
     text-align: center;;
-    padding: 19px;
+    padding: 1px;
     font-size: 15px;
     background: rgb(247, 244, 244);
     border-top: 1px solid #d9e3f0;
+    color: #64748b;
+    margin-top: auto;
+    line-height: 1.5;
 
 }
 
 footer a {
-    color: var(--primary);
+    color: #507213;
     text-decoration: none;
+    font-weight: bolder;
+    padding: 2px 5px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+footer p {
+    font-size: 18px;
+    color: rgb(37, 36, 36);
+}
+
+footer a:hover {
+    background-color: rgb(228, 231, 236);;
+    color: rgb(27, 77, 216);
+    text-decoration: underline;
+    
 }
 
 

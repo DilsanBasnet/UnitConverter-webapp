@@ -184,3 +184,76 @@ footer a:hover {
 }
 
 
+.history-section {
+    margin-top: 24px;
+    padding-top: 19px;
+    border-top: 1px dashed rgb(213, 218, 225);
+}
+
+.history-section h3 {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+#historyList {
+    list-style: none;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgb(240, 243, 245);
+    border-radius: 8px;
+    margin-bottom: 7px;
+    font-size: 14px;
+    animation: fadeIn 0.3s ease;
+
+}
+
+.result-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#copyBtn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgb(87, 120, 27);
+    transition: transform 0.3s;
+
+
+}
+
+#copyBtn:hover {
+transform: scale(1.2);
+
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-weight: bolder;
+    cursor: pointer;
+    
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+    ;
+    margin-bottom: 16px;
+    ;
+}
+
+

@@ -20,14 +20,17 @@
 
     <main>
         <div class="converter-card ">
-            <h2>Converter</h2>
+            <div class="card-header">
+            <h2>CONVERTER</h2> <button id="clearHistory" class="btn-text">Clear History</button>
 
+</div>
             <div class="form-group">
             <label>Unit Name</label>
             <select id="type">
                 <option value="length">Length</option>
                 <option value="weight">Weight</option>
                 <option value="temp">Temperature</option>
+                <option value="area">Area</option>
             </select>
         </div>
 
@@ -42,12 +45,22 @@
     <div class="form-group">
         <label>To</label>
         <select id="toUnit"></select>
+        <div class="result-container">
         <input type="text" id="outputNum" readonly 
         placeholder="Result" >
+        <button id = "copyBtn" title="Copy Result">Copy it!</button>
+    </div>
     </div>
 </div>
+
+<div class="history-section">
+    <h3></h3>
+    <ul id="historyList">
+        <li class="emplty-msg">No recent activy</li>
+    </ul>
+</div>
         </div>
-    </div>
+        
 </main>
 
     <footer>

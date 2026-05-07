@@ -258,3 +258,23 @@ transform: scale(1.2);
 }
 
 
+.sub-footer {
+    background-color: rgb(82, 163, 245);
+    padding: 18px 8%;
+    text-align: center;
+    border-top: 1px solid rgb(225, 230, 237);
+}
+
+.sub-footer p {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 17px;
+    color: rgb(38, 72, 124);
+    line-height: 1.5;
+}
+
+.sub-footer strong {
+    color: #233a27;;
+    font-size: 19px;
+    font-weight: bolder;;
+}

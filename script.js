@@ -1,7 +1,7 @@
 const units = {
     length: { Meters: 1, Kilometers: 1000, Feet: 0.3048, Miles: 1609.34, Inches: 0.0254},
     weight: {Kilograms: 1, Grams: 0.001, Pounds: 0.4535, Ounces: 0.0283},
-    area: {"Sq Meters": '1', "Sq Kilometers": 1000000, "Sq Feet": 0.0929, "Acres": 4046.86},
+    area: {"Sq Meters": 1, "Sq Kilometers": 1000000, "Sq Feet": 0.0929, "Acres": 4046.86},
     temp: {Celsius: 'c', Fahrenheit: 'f', Kelvin: 'k' }
     
 };
@@ -12,7 +12,7 @@ const toEl = document.getElementById('toUnit');
 const inputEl = document.getElementById('inputNum');
 const outputEl = document.getElementById('outputNum');
 
-const historyList = documentElementById('historyList');
+const historyList = document.getElementById('historyList');
 
 function updateOptions() {
     const category = typeEl.value;
@@ -32,7 +32,7 @@ function addToHistory(val, from, res, to) {
     const li = document.createElement('div');
     li.className = 'history-item';
     li.innerHTML = `<span>${val} ${from}</span>
-    <span> -> </span> <strong>${res} ${to}</strong></span>`;
+    <span> <strong>${res} ${to}</strong></span>`;
 
     if(historyList.querySelector('.empty-msg'))historyList.innerHTML='';
 
@@ -51,7 +51,7 @@ function convert() {
         return;
     }
     if( cat === 'temp') {
-        let c;
+        let c, res;
 
         if(fromEl.value === 'Celsius') c = val;
         else if(fromEl.value === 'Fahrenheit') c = (val - 32) * 5/9;
@@ -63,7 +63,7 @@ function convert() {
 res = Number(res.toFixed(4));
 } 
 else {
-    res = val * (units[cat] [fromEl.value] / units[cat] [toEl.value]);
+    res = val * (units[cat][fromEl.value] / units[cat][toEl.value]);
     res = res % 1 === 0 ? res : Number(res.toFixed(5));
 
 }
@@ -88,9 +88,10 @@ document.getElementById('copyBtn').addEventListener('click', () => {
     }
 });
    
-Document.getElementById('clearHistory').addEventListener('click', () => {
-    historyList.innerHTML = `<div class = "empty-msg' style= "text-align:center; font-size: 14px;
-    color: rgb(203, 212, 223); padding: 10px;"></div>`;
+
+document.getElementById('clearHistory').addEventListener('click', () => {
+    historyList.innerHTML = `<div class="empty-msg' style="text-align:center; font-size: 14px;
+    color: rgb(203, 212, 223); padding: 10px;">No recent Activity</div>`;
 });
 
 typeEl.addEventListener('change', updateOptions);

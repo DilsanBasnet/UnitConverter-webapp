@@ -26,6 +26,7 @@ if(options.length > 1) toEl.selectedIndex = 1;
 convert();
 }
 
+
 function addToHistory(val, from, res, to) {
     if(!val || val == 0) return;
     const li = document.createElement('div');
@@ -40,7 +41,7 @@ function addToHistory(val, from, res, to) {
     if(historyList.children.length > 4) {
         historyList.removeChild(historyList.lastChild);
     }
-
+}
 function convert() {
     const cat = typeEl.value;
     const val = parseFloat(inputEl.value);
@@ -71,60 +72,37 @@ outputEl.value = res;
 }
 
 let logTimer;
-input
+inputEl.addEventListener('input' , () => {
+    convert();
+    clearTimeout(logTimer);
+    logTimer = setTimeout(() => {
+        addToHistory(inputEl.value, fromEl.value, outputEl.value, toEl.value);}, 1200);
+    });
 
-
-}
-
-copyBtn.addEventListener('click', () => {
-    const text = document.getElementById('outputNum').value;
-
-    if(text) {
-        navigator.clipboard.writeText(text);
-        copyBtn.innerText = '✔️'
-        setTimeout(() => copyBtn.innerText = '📑', 1500);
+document.getElementById('copyBtn').addEventListener('click', () => {
+    if(outputEl.value) {
+        navigator.clipboard.writeText(outputEl.value);
+        const btn = document.getElementById('copyBtn');
+        btn.innerText = "Copied";
+        setTimeout(() => btn.innerText = "Copy Result", 1500);
     }
 });
-typeEl.addEventListener('change', updateOptions);
-[fromEl, toEl, inputEl].forEach(el => {
-    el.addEventListener('input', convert);
-});
-
-clearBtn.addEventListener('click', () => {
-    historyList.innerHTML = `<li class="empty-msg'> No recent Actvity</li>`;
-});
-
-let historyTimer;
-function convert() {
-    const cat = typeEl.value;
-    const val = parseFloat(inputEl.value);
-
-if(isNaN(val)) {outputEl.value= ""; return;}
-}
-
-let res;
-if(cat === 'temp') {
-    let c;
-    if(fromEl.value === 'Celsius') c = val;
-    
-    else if (fromEl.value === 'Fahrenheit') c = (val - 32) * 5/9;
-    else c = val - 273.15;
-
-    if(toEl.value === 'Celsius') res = c;
-    else if (toEl.value === 'Fahrenheit') res = (c * 9/5) + 32;
-    else res = val + 273.15;
-    res = Number(res.toFixed(4)); }
-    else {
-        res = val * (units[cat][fromEl.value] / units [cat][toEl.value]);
-        res = res % 1 === 0 ? res : Number(res.toFixed(5));
-    }
-
-    outputEl.value = res;
-
-    clearTimeout(historyTimer);
-    historyTimer = setTimeout(() => {
-        if (val) addToHistory(val, fromEl.value, res, toEl.value);
-    }, 1000);
    
+Document.getElementById('clearHistory').addEventListener('click', () => {
+    historyList.innerHTML = `<div class = "empty-msg' style= "text-align:center; font-size: 14px;
+    color: rgb(203, 212, 223); padding: 10px;"></div>`;
+});
+
+typeEl.addEventListener('change', updateOptions);
+fromEl.addEventListener('change', convert);
+toEl.addEventListener('change', convert);
+
 updateOptions();
+
+
+
+
+
+   
+
 

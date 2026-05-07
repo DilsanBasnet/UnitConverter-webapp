@@ -2,8 +2,14 @@ const units = {
     length: { Meters: 1, Kilometers: 1000, Feet: 0.3048, Miles: 1609.34, Inches: 0.0254},
     weight: {Kilograms: 1, Grams: 0.001, Pounds: 0.4535, Ounces: 0.0283},
     area: {"Sq Meters": 1, "Sq Kilometers": 1000000, "Sq Feet": 0.0929, "Acres": 4046.86},
-    temp: {Celsius: 'c', Fahrenheit: 'f', Kelvin: 'k' }
-    
+    temp: {Celsius: 'c', Fahrenheit: 'f', Kelvin: 'k' },
+    current: {
+        Amperes: 1, Milliamperes: 0.001, Kiloamperes: 1000
+    },
+    time: {
+        Seconds: 1, Minutes: 60, Hours: 3600, Days: 86400, Years: 31536000
+    }
+  
 };
 
 const typeEl = document.getElementById('type');;
